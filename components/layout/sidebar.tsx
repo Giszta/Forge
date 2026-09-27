@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SidebarNav } from "./sidebar-nav";
 
