@@ -19,6 +19,7 @@ model Organization {
   updatedAt DateTime @updatedAt
 
   users User[]
+  projects Project[]
 
   @@map("organizations")
 }
@@ -45,6 +46,8 @@ model User {
 
   sessions Session[]
   accounts Account[]
+
+  createdProjects Project[]
 
   @@index([organizationId])
   @@map("users")
@@ -98,4 +101,22 @@ model Verification {
 
   @@index([identifier])
   @@map("verifications")
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  archivedAt  DateTime?
+
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdById String?
+  createdBy   User?   @relation(fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@unique([organizationId, name])
+  @@index([organizationId])
+  @@map("projects")
 }
