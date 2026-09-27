@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { loginAction, type LoginState } from "./actions";
+import { demoLoginAction } from "@/lib/auth/actions";
 
 const initialState: LoginState = {};
 
@@ -81,7 +82,20 @@ export default function LoginPage() {
               {isPending ? "Logowanie..." : "Zaloguj się"}
             </Button>
           </form>
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">lub</span>
+            </div>
+          </div>
 
+          <form action={demoLoginAction}>
+            <Button type="submit" variant="outline" className="w-full">
+              Zaloguj jako Demo
+            </Button>
+          </form>
           <p className="mt-4 text-center text-sm text-muted-foreground">
             Nie masz jeszcze konta?{" "}
             <Link href="/register" className="underline underline-offset-4">
