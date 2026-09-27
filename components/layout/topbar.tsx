@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { SidebarNav } from "./sidebar-nav";
+import { SignOutButton } from "./sign-out-button";
 
 export function Topbar() {
   return (
@@ -41,8 +42,11 @@ export function Topbar() {
         <p className="text-sm font-medium text-muted-foreground md:hidden">FORGE</p>
       </div>
 
-      <div className="flex size-8 items-center justify-center rounded-full bg-sidebar-accent text-sidebar-accent-foreground">
-        <User className="size-4" />
+            <div className="flex items-center gap-2">
+        <div className="flex size-8 items-center justify-center rounded-full bg-sidebar-accent text-sidebar-accent-foreground">
+          <User className="size-4" />
+        </div>
+        <SignOutButton />
       </div>
     </header>
   );
